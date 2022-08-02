@@ -1,6 +1,6 @@
 package com.uce.edu.demo.service;
 
-import com.uce.edu.demo.modelo.CitaMedica;
+import com.uce.edu.demo.repository.modelo.CitaMedica;
 
 public interface ICitaMedicaService {
 

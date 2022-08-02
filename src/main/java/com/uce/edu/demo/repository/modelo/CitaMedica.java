@@ -1,4 +1,4 @@
-package com.uce.edu.demo.modelo;
+package com.uce.edu.demo.repository.modelo;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

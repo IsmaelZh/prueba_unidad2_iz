@@ -7,16 +7,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.uce.edu.demo.modelo.CitaMedica;
-import com.uce.edu.demo.modelo.Doctor;
-import com.uce.edu.demo.modelo.Paciente;
-import com.uce.edu.demo.modelo.PacienteSencillo;
 import com.uce.edu.demo.repository.ICitaMedicaRepo;
 import com.uce.edu.demo.repository.IDoctorRepo;
 import com.uce.edu.demo.repository.IPacienteRepo;
+import com.uce.edu.demo.repository.modelo.CitaMedica;
+import com.uce.edu.demo.repository.modelo.Doctor;
+import com.uce.edu.demo.repository.modelo.Paciente;
+import com.uce.edu.demo.repository.modelo.PacienteSencillo;
 
 @Service
-public class GestorCitaMedicaServiceImpl implements IGestorCitaMedica {
+public class GestorCitaMedicaServiceImpl implements IGestorCitaMedicaService {
 
 	@Autowired
 	private IDoctorRepo doctorRepo;
@@ -40,9 +40,6 @@ public class GestorCitaMedicaServiceImpl implements IGestorCitaMedica {
 		cita.setFechaCita(fechaCita);
 		cita.setValorCita(valor);
 		cita.setLugarCita(lugarCita);
-		cita.setDiagnostico("Sarpullido");
-		cita.setReceta("Apronax");
-		cita.setFechaProximaCita(LocalDateTime.of(2021, 12, 12, 15, 14));
 		cita.setPaciente(paciente);
 		cita.setDoctor(doctor);
 
@@ -51,8 +48,23 @@ public class GestorCitaMedicaServiceImpl implements IGestorCitaMedica {
 	}
 
 	@Override
+	public void actualizarCita(String numero, String diagnostico, String receta, LocalDateTime fechaProxima) {
+		// TODO Auto-generated method stub
+
+	        CitaMedica cita = this.iCitaMedicaRepo.buscarPorNumero(numero);
+	        cita.setDiagnostico(diagnostico);
+	        cita.setReceta(receta);
+	        cita.setFechaProximaCita(fechaProxima);
+
+	        this.iCitaMedicaRepo.actualizar(cita);
+
+	    }
+		
+
+	@Override
 	public List<PacienteSencillo> reportePacientes(LocalDateTime fecha, String genero) {
 		// TODO Auto-generated method stub
 		return this.iPacienteRepo.reportePacientes(fecha, genero);
 	}
+
 }

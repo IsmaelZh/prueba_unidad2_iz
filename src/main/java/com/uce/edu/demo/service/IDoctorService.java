@@ -1,12 +1,12 @@
 package com.uce.edu.demo.service;
 
-import com.uce.edu.demo.modelo.Doctor;
+import com.uce.edu.demo.repository.modelo.Doctor;
 
 public interface IDoctorService {
 
 	public void insertar (Doctor doctor);
-	public Doctor buscar (Integer id);
+	public Doctor buscar (Integer codigo);
 	public void actualizar (Doctor doctor);
-	public void eliminar (Integer id);
+	public void eliminar (Integer codigo);
 	
 }

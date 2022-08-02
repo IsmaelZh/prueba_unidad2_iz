@@ -11,11 +11,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.uce.edu.demo.modelo.Doctor;
-import com.uce.edu.demo.modelo.Paciente;
-import com.uce.edu.demo.modelo.PacienteSencillo;
+import com.uce.edu.demo.repository.modelo.Doctor;
+import com.uce.edu.demo.repository.modelo.Paciente;
+import com.uce.edu.demo.repository.modelo.PacienteSencillo;
 import com.uce.edu.demo.service.IDoctorService;
-import com.uce.edu.demo.service.IGestorCitaMedica;
+import com.uce.edu.demo.service.IGestorCitaMedicaService;
 import com.uce.edu.demo.service.IPacienteService;
 
 @SpringBootApplication
@@ -30,7 +30,7 @@ public class PruebaUnidad2IzApplication implements CommandLineRunner {
 	private IPacienteService iPacienteService;
 
 	@Autowired
-	private IGestorCitaMedica citaMedica;
+	private IGestorCitaMedicaService citaMedica;
 
 	public static void main(String[] args) {
 		SpringApplication.run(PruebaUnidad2IzApplication.class, args);
@@ -50,7 +50,7 @@ public class PruebaUnidad2IzApplication implements CommandLineRunner {
 		doctor.setCodigoSenescyt("sd84s");
 		doctor.setGenero("M");
 
-		this.doctorService.insertar(doctor);
+		//this.doctorService.insertar(doctor);
 
 		Doctor doctor2 = new Doctor();
 		doctor2.setCedula("1789898585");
@@ -61,7 +61,7 @@ public class PruebaUnidad2IzApplication implements CommandLineRunner {
 		doctor2.setCodigoSenescyt("sd5f1ds");
 		doctor2.setGenero("F");
 
-		this.doctorService.insertar(doctor2);
+		//this.doctorService.insertar(doctor2);
 
 		// Ingresar 2 pacientes
 		Paciente paciente = new Paciente();
@@ -74,7 +74,7 @@ public class PruebaUnidad2IzApplication implements CommandLineRunner {
 		paciente.setPeso(55.6);
 		paciente.setGenero("M");
 
-		this.iPacienteService.insertar(paciente);
+		//this.iPacienteService.insertar(paciente);
 
 		Paciente paciente2 = new Paciente();
 		paciente2.setCedula("9695325689");
@@ -86,9 +86,11 @@ public class PruebaUnidad2IzApplication implements CommandLineRunner {
 		paciente2.setPeso(70.4);
 		paciente2.setGenero("F");
 
-		this.iPacienteService.insertar(paciente2);
+		//this.iPacienteService.insertar(paciente2);
 
-		this.citaMedica.agendamientoCitaMedica("6", LocalDateTime.now(), new BigDecimal("25.0"), "Hospital Voz Andes", "1789898585", "0263636325");
+		this.citaMedica.agendamientoCitaMedica("18", LocalDateTime.now(), new BigDecimal("15"), "Cumanda", "030555639", "9695325689");
+		
+		this.citaMedica.actualizarCita("55", "Covid", "Ibuprofeno", LocalDateTime.now());
 		
 		List<PacienteSencillo> listaPaciente = this.citaMedica.reportePacientes(LocalDateTime.of(1900, 11, 9, 6, 12), "F");
 		for(PacienteSencillo i : listaPaciente) {

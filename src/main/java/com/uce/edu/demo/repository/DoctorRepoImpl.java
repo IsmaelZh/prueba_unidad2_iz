@@ -9,7 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
-import com.uce.edu.demo.modelo.Doctor;
+import com.uce.edu.demo.repository.modelo.Doctor;
 @Repository
 @Transactional
 public class DoctorRepoImpl implements IDoctorRepo {
@@ -28,9 +28,9 @@ public class DoctorRepoImpl implements IDoctorRepo {
 	}
 
 	@Override
-	public Doctor buscar(Integer id) {
+	public Doctor buscar(Integer codigo) {
 		// TODO Auto-generated method stub
-		return this.entityManager.find(Doctor.class, id);
+		return this.entityManager.find(Doctor.class, codigo);
 	}
 
 	@Override
@@ -40,9 +40,9 @@ public class DoctorRepoImpl implements IDoctorRepo {
 	}
 
 	@Override
-	public void eliminar(Integer id) {
+	public void eliminar(Integer codigo) {
 		// TODO Auto-generated method stub
-		this.entityManager.remove(this.buscar(id));
+		this.entityManager.remove(this.buscar(codigo));
 	}
 
 	@Override

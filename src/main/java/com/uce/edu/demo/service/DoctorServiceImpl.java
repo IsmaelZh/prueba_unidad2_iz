@@ -3,15 +3,15 @@ package com.uce.edu.demo.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.uce.edu.demo.modelo.Doctor;
 import com.uce.edu.demo.repository.IDoctorRepo;
+import com.uce.edu.demo.repository.modelo.Doctor;
 
 @Service
 public class DoctorServiceImpl implements IDoctorService {
 
 	@Autowired
 	private IDoctorRepo iDoctorRepo;
-	
+
 	@Override
 	public void insertar(Doctor doctor) {
 		// TODO Auto-generated method stub
@@ -19,9 +19,9 @@ public class DoctorServiceImpl implements IDoctorService {
 	}
 
 	@Override
-	public Doctor buscar(Integer id) {
+	public Doctor buscar(Integer codigo) {
 		// TODO Auto-generated method stub
-		return this.iDoctorRepo.buscar(id);
+		return this.iDoctorRepo.buscar(codigo);
 	}
 
 	@Override
@@ -31,9 +31,9 @@ public class DoctorServiceImpl implements IDoctorService {
 	}
 
 	@Override
-	public void eliminar(Integer id) {
+	public void eliminar(Integer codigo) {
 		// TODO Auto-generated method stub
-		this.iDoctorRepo.eliminar(id);
+		this.iDoctorRepo.eliminar(codigo);
 	}
 
 }
